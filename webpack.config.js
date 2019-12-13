@@ -1,14 +1,14 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "bundle.js",
-    path: path.join(__dirname, "public")
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'public')
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, 'public'),
     hot: true,
     inline: true,
     historyApiFallback: true,
@@ -18,28 +18,28 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx']
   },
-  mode: "development",
+  mode: 'development',
   module: {
     rules: [
       {
-        loader: "babel-loader",
+        loader: 'babel-loader',
         test: /\.(js|jsx)$/,
         exclude: /node_modules/
       },
       {
         test: /\.s?css$/i,
         use: [
-          "style-loader",
+          'style-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               sourceMap: true
             }
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true
             }
@@ -48,16 +48,16 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          outputPath: "images"
+          outputPath: 'images'
         }
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "public/index.html"
+      template: 'public/index.html'
     })
   ]
 };
