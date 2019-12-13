@@ -9,7 +9,13 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "public"),
-    hot: true
+    hot: true,
+    inline: true,
+    historyApiFallback: true,
+    port: 8080,
+    watchOptions: {
+      ignored: /node_modules/
+    }
   },
   mode: "development",
   module: {
@@ -20,7 +26,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.s?css$/i,
         use: [
           "style-loader",
           {
@@ -36,6 +42,13 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: "file-loader",
+        options: {
+          outputPath: "images"
+        }
       }
     ]
   },
