@@ -10,6 +10,9 @@ module.exports = {
     path: path.join(__dirname, "dist")
   },
   mode: "production",
+  resolve: {
+    extensions: [".js", ".jsx"]
+  },
   module: {
     rules: [
       {

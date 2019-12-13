@@ -17,6 +17,9 @@ module.exports = {
       ignored: /node_modules/
     }
   },
+  resolve: {
+    extensions: [".js", ".jsx"]
+  },
   mode: "development",
   module: {
     rules: [
