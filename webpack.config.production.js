@@ -35,7 +35,8 @@ module.exports = {
       filename: 'style.[hash].css'
     }),
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: 'public/index.html',
+      inject: true
     })
   ]
 };

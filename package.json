@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --config webpack.config.js --watch",
     "build:dev": "webpack --config webpack.config.js  --progress",
     "build:prod": "webpack --config webpack.config.production.js",
     "start": "webpack-dev-server --watch",
@@ -52,7 +51,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run format",
+      "pre-commit": "npm run lint:fix && npm run format:fix",
       "pre-push": "lint-staged"
     }
   },
@@ -61,11 +60,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.+(json|css|md)": [
-      "prettier --write",
-      "git add"
-    ],
-    "*.+(scss|css)": [
+    "*.+(json|css|md|scss)": [
       "prettier --write",
       "git add"
     ]

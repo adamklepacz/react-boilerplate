@@ -9,9 +9,10 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'public'),
+    disableHostCheck: true,
+    historyApiFallback: true,
     hot: true,
     inline: true,
-    historyApiFallback: true,
     port: 8080,
     watchOptions: {
       ignored: /node_modules/
@@ -57,7 +58,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: 'public/index.html',
+      inject: true
     })
   ]
 };
