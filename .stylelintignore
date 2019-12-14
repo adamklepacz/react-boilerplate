@@ -1,4 +1,4 @@
 node_modules/
 dist/
 dist_dev/
-*.min.js
+*.min.css
