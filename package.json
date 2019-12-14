@@ -11,7 +11,9 @@
     "lint": "eslint ./ --ext \".js,.jsx\" --max-warnings=0",
     "lint:fix": "eslint ./ --ext \".js,.jsx\" --max-warnings=0 --fix",
     "format": "prettier --check \"**/*.+(js|jsx|json|yml|yaml|css|md|)\"",
-    "format:fix": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|)\""
+    "format:fix": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|md|)\"",
+    "stylelint": "stylelint src/**/*.scss --cache",
+    "stylelint:fix": "stylelint src/**/*.scss --cache --fix"
   },
   "keywords": [],
   "author": "",
@@ -45,6 +47,9 @@
     "prettier": "1.19.1",
     "sass-loader": "8.0.0",
     "style-loader": "1.0.1",
+    "stylelint": "12.0.0",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-scss": "3.13.0",
     "terser-webpack-plugin": "2.3.0",
     "webpack": "4.41.2",
     "webpack-cli": "3.3.10",
@@ -52,17 +57,24 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint:fix && npm run format:fix",
+      "pre-commit": "npm run lint:fix && npm run format:fix && npm run stylelint:fix",
       "pre-push": "lint-staged"
     }
   },
   "lint-staged": {
     "*.+(js|jsx),!*.min.js": [
       "eslint --fix",
+      "echo eslint started",
       "git add"
     ],
     "*.+(json|css|md|scss)": [
       "prettier --write",
+      "echo prettier started",
+      "git add"
+    ],
+    "*.scss": [
+      "stylelint --syntax scss",
+      "echo stylelint started",
       "git add"
     ]
   }
