@@ -23,6 +23,13 @@ module.exports = {
       {
         test: /\.s?css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'images'
+        }
       }
     ]
   },
@@ -32,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[hash].css'
+      filename: 'style.css'
     }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
